@@ -21,6 +21,7 @@ export default function UserList() {
             <Search />
 
             <div className="table-wrapper">
+                <div className="overlays">
                 {/* <!-- Overlap components  --> */}
 
                 {/* <!-- <div className="loading-shade"> --> */}
@@ -69,6 +70,7 @@ export default function UserList() {
                     <h2>Failed to fetch</h2>
                 </div>  */}
                 {/* <!-- </div> --> */}
+                </div>
 
                 <table className="table">
                     <thead>
@@ -126,12 +128,14 @@ export default function UserList() {
                         </tr>
                     </thead>
                     <tbody>
-                        <UserListItem />
+                        {users.map(user => <UserListItem
+                            key={user._id}
+                            {...user}
+                        />)}
                     </tbody>
                 </table>
             </div>
 
-            {/* <!-- New user button  --> */}
             <button className="btn-add btn">Add new user</button>
 
             <Pagination />
